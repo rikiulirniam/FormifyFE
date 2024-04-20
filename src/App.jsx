@@ -6,6 +6,9 @@ import "./assets/js/popper";
 import { AuthProvider } from "./auth/Provider";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
+import Home from "./pages/Home";
+import CreateForm from "./pages/CreateForm";
+import DetailForm from "./pages/DetailForm";
 
 function App() {
   return (
@@ -13,7 +16,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/"/>
+          <Route path="/home" element={<Home />} />
+          <Route path="/create-form" element={<CreateForm />} />
+          <Route path="/forms/:form-slug" element={<DetailForm />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

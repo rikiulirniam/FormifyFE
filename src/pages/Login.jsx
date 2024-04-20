@@ -1,23 +1,28 @@
 import { useState } from "react";
 import { useAuth, useAxios } from "../hooks";
 import Alert from "../components/Alert";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
   const axios = useAxios();
   const user = useAuth();
   const [data, setData] = useState([]);
   const [alert, setAlert] = useState();
 
   function handleChange(e) {
-    setData([...data, [e.target.name], e.target.value]);
+    setData({ ...data, [e.target.name]: e.target.value });
   }
 
   function handleSubmit(e) {
     e.preventDefault();
+    setAlert({});
     axios
       .post("auth/login", data)
       .then((res) => {
-        console.log(res);
+        user.setUser(res.data.user);
+        localStorage.setItem("token", res.data.user.accessToken);
+        location.href = "/home";
       })
       .catch((err) => {
         console.log(err);

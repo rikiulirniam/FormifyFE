@@ -1,11 +1,12 @@
 import { createContext, useEffect, useState } from "react";
 import { useAxios } from "../hooks";
 
-export const AuthContext = createContext();
+export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(undefined);
   const [loading, setLoading] = useState(true);
+
   const axios = useAxios();
 
   function load() {
@@ -13,9 +14,10 @@ export const AuthProvider = ({ children }) => {
       .get("auth/me")
       .then((res) => {
         console.log(res);
+        setUser(res.data.user);
       })
       .catch((err) => {
-        console.log(err);
+        location.href = "/";
       })
       .finally((load) => {
         setLoading(false);
