@@ -74,20 +74,6 @@ function CreateForm() {
                   </div>
 
                   <div className="form-group my-3">
-                    <label for="slug" className="mb-1 text-muted">
-                      Form Slug
-                    </label>
-                    <input
-                      type="text"
-                      id="slug"
-                      name="slug"
-                      value={data.slug}
-                      onChange={handleChange}
-                      className="form-control"
-                    />
-                  </div>
-
-                  <div className="form-group my-3">
                     <label for="description" className="mb-1 text-muted">
                       Description
                     </label>

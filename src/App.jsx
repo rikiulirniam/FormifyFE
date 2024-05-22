@@ -18,7 +18,8 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/home" element={<Home />} />
           <Route path="/create-form" element={<CreateForm />} />
-          <Route path="/forms/:form-slug" element={<DetailForm />} />
+          <Route path="/forms/:form-slug/questions" element={<DetailForm />} />
+          <Route path="/forms/:form-slug/responses" element={<DetailForm />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

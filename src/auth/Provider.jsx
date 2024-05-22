@@ -16,9 +16,7 @@ export const AuthProvider = ({ children }) => {
         console.log(res);
         setUser(res.data.user);
       })
-      .catch((err) => {
-        location.href = "/";
-      })
+      .catch((err) => {})
       .finally((load) => {
         setLoading(false);
       });
